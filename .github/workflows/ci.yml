@@ -11,6 +11,10 @@ jobs:
     name: Verify & Build
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: "file:./dev.db"
+      JWT_SECRET: "super-secret-jwt-key-must-be-at-least-32-chars-long"
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
