@@ -1,0 +1,107 @@
+version: 2
+updates:
+  # Monorepo root & workspaces
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Asia/Tashkent"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "uchkunr"
+    labels:
+      - "dependencies"
+      - "automated"
+    # Ehtiyotkorlik bilan yangilash:
+    # Minor va Patch versiyalar bir guruhda xavfsiz taqdim etiladi.
+    groups:
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    # Buzuvchi o'zgarishlar (breaking changes) kiritishi mumkin bo'lgan
+    # asosiy paketlarning Major yangilanishlari avtomatik ochilmaydi:
+    ignore:
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "prisma"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@prisma/*"
+        update-types: ["version-update:semver-major"]
+
+  # apps/web dependabot konfiguratsiyasi
+  - package-ecosystem: "npm"
+    directory: "/apps/web"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Asia/Tashkent"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "uchkunr"
+    labels:
+      - "dependencies"
+      - "web"
+    groups:
+      web-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+
+  # apps/api dependabot konfiguratsiyasi
+  - package-ecosystem: "npm"
+    directory: "/apps/api"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "04:00"
+      timezone: "Asia/Tashkent"
+    open-pull-requests-limit: 10
+    reviewers:
+      - "uchkunr"
+    labels:
+      - "dependencies"
+      - "api"
+    groups:
+      api-dependencies:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
+    ignore:
+      - dependency-name: "express"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "prisma"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "@prisma/*"
+        update-types: ["version-update:semver-major"]
+
+  # GitHub Actions workflow-lar yangilanishi
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "github-actions"
