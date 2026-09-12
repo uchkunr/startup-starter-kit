@@ -6,7 +6,9 @@ const secret = new TextEncoder().encode(env.JWT_SECRET);
 export interface AuthJwtPayload {
   userId: string;
   email: string;
+  username?: string | null;
   role: string;
+  sessionId?: string;
 }
 
 export async function signAccessToken(payload: AuthJwtPayload): Promise<string> {
@@ -22,6 +24,8 @@ export async function verifyAccessToken(token: string): Promise<AuthJwtPayload> 
   return {
     userId: payload.userId as string,
     email: payload.email as string,
+    username: payload.username as string | undefined,
     role: payload.role as string,
+    sessionId: payload.sessionId as string | undefined,
   };
 }

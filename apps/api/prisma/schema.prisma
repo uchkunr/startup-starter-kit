@@ -10,20 +10,39 @@ generator client {
 model User {
   id           String    @id @default(uuid())
   email        String    @unique
+  username     String?   @unique
   name         String?
-  passwordHash String
+  avatar       String?
+  passwordHash String?
   role         String    @default("USER")
+  status       String    @default("ACTIVE")
   createdAt    DateTime  @default(now())
   updatedAt    DateTime  @updatedAt
+  accounts     Account[]
   sessions     Session[]
 
   @@map("users")
+}
+
+model Account {
+  id                String   @id @default(uuid())
+  userId            String
+  provider          String
+  providerAccountId String
+  metadata          String?
+  createdAt         DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
 }
 
 model Session {
   id        String   @id @default(uuid())
   userId    String
   token     String   @unique
+  ipAddress String?
+  userAgent String?
   expiresAt DateTime
   createdAt DateTime @default(now())
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)

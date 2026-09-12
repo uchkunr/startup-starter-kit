@@ -27,8 +27,7 @@ export function ApiHealthCheck() {
       const data: unknown = await res.json();
       setResult({ ok: true, data });
     } catch (err: unknown) {
-      const message =
-        err instanceof Error ? err.message : "Failed to fetch";
+      const message = err instanceof Error ? err.message : "Failed to fetch";
       setResult({
         ok: false,
         error: message,
@@ -52,15 +51,15 @@ export function ApiHealthCheck() {
 
         {result && (
           <span
-            className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold ${
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${
               result.ok
-                ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/50 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800"
-                : "bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-400 border border-rose-200 dark:border-rose-800"
+                ? "border border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-800 dark:bg-emerald-950/50 dark:text-emerald-400"
+                : "border border-rose-200 bg-rose-50 text-rose-700 dark:border-rose-800 dark:bg-rose-950/50 dark:text-rose-400"
             }`}
           >
             <span
               className={`size-2 rounded-full ${
-                result.ok ? "bg-emerald-500 animate-pulse" : "bg-rose-500"
+                result.ok ? "animate-pulse bg-emerald-500" : "bg-rose-500"
               }`}
             />
             {result.ok ? t("apiOnline") : t("apiOffline")}
@@ -69,7 +68,7 @@ export function ApiHealthCheck() {
       </div>
 
       {result?.data !== undefined && (
-        <pre className="p-3 bg-muted rounded-lg text-xs font-mono overflow-x-auto text-muted-foreground border border-border">
+        <pre className="bg-muted text-muted-foreground border-border overflow-x-auto rounded-lg border p-3 font-mono text-xs">
           {JSON.stringify(result.data, null, 2)}
         </pre>
       )}

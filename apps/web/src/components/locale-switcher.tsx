@@ -15,7 +15,7 @@ export function LocaleSwitcher() {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center gap-1 bg-muted/60 p-1 rounded-lg border border-border">
+    <div className="bg-muted/60 border-border flex items-center gap-1 rounded-lg border p-1">
       {locales.map(({ code, label }) => {
         const isActive = currentLocale === code;
         return (
@@ -23,7 +23,7 @@ export function LocaleSwitcher() {
             <Button
               variant={isActive ? "default" : "ghost"}
               size="xs"
-              className="text-xs font-medium cursor-pointer"
+              className="cursor-pointer text-xs font-medium"
             >
               {label}
             </Button>

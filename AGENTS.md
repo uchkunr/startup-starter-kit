@@ -30,6 +30,7 @@ When working in this codebase, adhere strictly to the following instructions, co
 ## 🏗 Architecture Patterns
 
 ### 1. Backend (`apps/api`)
+
 - Follow the **Modular Layered Architecture**:
   - `src/modules/<feature>/`: Keep feature modules self-contained.
     - `<feature>.schema.ts`: Zod validation schemas and TypeScript types.
@@ -42,6 +43,7 @@ When working in this codebase, adhere strictly to the following instructions, co
 - Express 5 specific note: Route parameters `req.params.id` can be `string | string[]`. Handle with array check before passing to services.
 
 ### 2. Frontend (`apps/web`)
+
 - **i18n**: All user-facing strings must use `next-intl` messages located in `messages/{locale}.json`.
 - **Pages**: Placed inside `src/app/[locale]/`. Use `setRequestLocale(locale)` in Server Components and Layouts.
 - **Components**:
@@ -76,6 +78,7 @@ pnpm --filter api exec prisma db push
 ---
 
 ## ⚠️ Critical Rules for Agents
+
 1. **Never downgrade packages**: Always keep dependencies at modern `@latest` versions.
 2. **Strict TypeScript**: Do not use `any`. Use proper types or `unknown` with type guards.
 3. **Workspace Discipline**: Do not create redundant `pnpm-workspace.yaml` files inside sub-apps.

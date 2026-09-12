@@ -1,0 +1,11 @@
+node_modules/
+.next/
+dist/
+build/
+.turbo/
+pnpm-lock.yaml
+*.min.js
+**/src/generated/**
+**/generated/**
+dev.db*
+.git/

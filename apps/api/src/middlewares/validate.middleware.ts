@@ -17,7 +17,9 @@ export function validate(validators: RequestValidators) {
         req.query = (await validators.query.parseAsync(req.query)) as typeof req.query;
       }
       if (validators.params) {
-        req.params = (await validators.params.parseAsync(req.params)) as typeof req.params;
+        req.params = (await validators.params.parseAsync(
+          req.params
+        )) as typeof req.params;
       }
       next();
     } catch (error) {
