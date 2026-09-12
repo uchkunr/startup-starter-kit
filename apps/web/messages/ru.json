@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Startup Starter Kit",
+    "subtitle": "Next.js 16 + shadcn UI + Tailwind CSS v4 + Express.js API",
+    "tagline": "Современная, безопасная и готовая к продакшну архитектура монорепозитория.",
+    "webBadge": "Фронтенд (Web)",
+    "apiBadge": "Бэкенд (API)",
+    "featuresTitle": "Используемые технологии",
+    "apiCardTitle": "Архитектура Express.js API",
+    "apiCardDesc": "Безопасный REST API с Argon2, Jose (JWT), Prisma ORM, валидацией Zod и Cors.",
+    "apiTestLabel": "Проверка статуса API",
+    "checkApiBtn": "Проверить статус",
+    "checking": "Проверка...",
+    "apiOnline": "API доступен и работает!",
+    "apiOffline": "Нет связи с API (убедитесь, что сервер запущен)",
+    "demoFormTitle": "Компоненты авторизации (shadcn UI)",
+    "emailPlaceholder": "email@example.com",
+    "passwordPlaceholder": "Введите пароль",
+    "submitBtn": "Войти",
+    "registerBtn": "Регистрация",
+    "language": "Язык"
+  }
+}

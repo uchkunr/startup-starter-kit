@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Startup Starter Kit",
+    "subtitle": "Next.js 16 + shadcn UI + Tailwind CSS v4 + Express.js API",
+    "tagline": "Zamonaviy, xavfsiz va to'liq arxitekturaga ega monorepo loyihasi.",
+    "webBadge": "Frontend (Web)",
+    "apiBadge": "Backend (API)",
+    "featuresTitle": "O'rnatilgan texnologiyalar",
+    "apiCardTitle": "Express.js API Arxitekturasi",
+    "apiCardDesc": "Argon2, Jose (JWT), Prisma ORM, Zod validatsiya va Cors bilan to'liq himoyalangan REST API.",
+    "apiTestLabel": "API Statusini tekshirish",
+    "checkApiBtn": "Statusni tekshirish",
+    "checking": "Tekshirilmoqda...",
+    "apiOnline": "API Online va ishlamoqda!",
+    "apiOffline": "API bilan aloqa yo'q (serverni ishga tushiring)",
+    "demoFormTitle": "Avtorizatsiya komponentlari (shadcn UI)",
+    "emailPlaceholder": "pochta@example.com",
+    "passwordPlaceholder": "Parol kiriting",
+    "submitBtn": "Kirish",
+    "registerBtn": "Ro'yxatdan o'tish",
+    "language": "Til"
+  }
+}

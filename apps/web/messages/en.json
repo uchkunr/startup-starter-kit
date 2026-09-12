@@ -1,0 +1,23 @@
+{
+  "HomePage": {
+    "title": "Startup Starter Kit",
+    "subtitle": "Next.js 16 + shadcn UI + Tailwind CSS v4 + Express.js API",
+    "tagline": "Modern, secure, and production-ready monorepo architecture.",
+    "webBadge": "Frontend (Web)",
+    "apiBadge": "Backend (API)",
+    "featuresTitle": "Integrated Technologies",
+    "apiCardTitle": "Express.js API Architecture",
+    "apiCardDesc": "Fully secured REST API with Argon2, Jose (JWT), Prisma ORM, Zod validation, and Cors.",
+    "apiTestLabel": "Check API Status",
+    "checkApiBtn": "Test Health Endpoint",
+    "checking": "Checking...",
+    "apiOnline": "API is online and operational!",
+    "apiOffline": "Could not connect to API (ensure server is running)",
+    "demoFormTitle": "Authentication Components (shadcn UI)",
+    "emailPlaceholder": "email@example.com",
+    "passwordPlaceholder": "Enter password",
+    "submitBtn": "Sign In",
+    "registerBtn": "Sign Up",
+    "language": "Language"
+  }
+}
