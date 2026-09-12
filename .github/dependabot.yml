@@ -14,30 +14,21 @@ updates:
     labels:
       - "dependencies"
       - "automated"
-    # Ehtiyotkorlik bilan yangilash:
-    # Minor va Patch versiyalar bir guruhda xavfsiz taqdim etiladi.
+    # Ehtiyotkorlik strategiyasi:
+    # Faqat minor va patch versiyalar guruhlanadi
     groups:
-      minor-and-patch:
+      all-dependencies:
         patterns:
           - "*"
         update-types:
           - "minor"
           - "patch"
-    # Buzuvchi o'zgarishlar (breaking changes) kiritishi mumkin bo'lgan
-    # asosiy paketlarning Major yangilanishlari avtomatik ochilmaydi:
+    # Loyihani sindirib qo'ymaslik uchun barcha MAJOR versiyalar bloklanadi:
     ignore:
-      - dependency-name: "next"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react-dom"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "prisma"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@prisma/*"
+      - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # apps/web dependabot konfiguratsiyasi
+  # apps/web
   - package-ecosystem: "npm"
     directory: "/apps/web"
     schedule:
@@ -59,14 +50,10 @@ updates:
           - "minor"
           - "patch"
     ignore:
-      - dependency-name: "next"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "react-dom"
+      - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # apps/api dependabot konfiguratsiyasi
+  # apps/api
   - package-ecosystem: "npm"
     directory: "/apps/api"
     schedule:
@@ -88,14 +75,10 @@ updates:
           - "minor"
           - "patch"
     ignore:
-      - dependency-name: "express"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "prisma"
-        update-types: ["version-update:semver-major"]
-      - dependency-name: "@prisma/*"
+      - dependency-name: "*"
         update-types: ["version-update:semver-major"]
 
-  # GitHub Actions workflow-lar yangilanishi
+  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

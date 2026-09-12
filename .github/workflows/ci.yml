@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   verify:
     name: Verify & Build
@@ -18,6 +22,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref }}
+          fetch-depth: 0
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -31,7 +38,25 @@ jobs:
           cache: "pnpm"
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: |
+          if [ "${{ github.actor }}" = "dependabot[bot]" ]; then
+            echo "Dependabot PR detected: installing with --no-frozen-lockfile to sync lockfile"
+            pnpm install --no-frozen-lockfile
+          else
+            pnpm install --frozen-lockfile
+          fi
+
+      - name: Commit updated lockfile for Dependabot PRs
+        if: github.actor == 'dependabot[bot]'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status -s pnpm-lock.yaml) ]]; then
+            echo "pnpm-lock.yaml was updated, pushing changes to PR branch..."
+            git add pnpm-lock.yaml
+            git commit -m "chore(deps): sync pnpm-lock.yaml for dependabot [skip ci]"
+            git push
+          fi
 
       - name: Generate Prisma Client
         run: pnpm --filter api exec prisma generate
